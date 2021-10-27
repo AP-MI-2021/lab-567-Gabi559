@@ -3,7 +3,7 @@ from Logic.CRUD import get_by_id
 
 
 def test_creeaza_librarie():
-    assert creeaza_librarie(2, "Amintiri din copilarie", "aventura", 1.2, "None") =={'id': 2, 'titlu_carte': 'Amintiri din copilarie', 'gen_carte': 'aventura', 'pret': 1.2, 'tip_reducere': 'None'}
+    assert creeaza_librarie(2, "Amintiri din copilarie", "aventura", 1.2, "None") ==[ 2,'Amintiri din copilarie','aventura', 1.2, 'None']
 def test_get_id():
     librarie=creeaza_librarie(2, "Amintiri din copilarie", "aventura", 1.2, "None")
     lista=[librarie]

@@ -1,4 +1,4 @@
-def creeaza_librarie(id,titlu_carte,gen_carte,pret,tip_reducere):
+def creeaza_librarie(id, titlu_carte, gen_carte, pret, tip_reducere):
     """
     :param id: int
     :param titlu_carte: string
@@ -7,20 +7,30 @@ def creeaza_librarie(id,titlu_carte,gen_carte,pret,tip_reducere):
     :param tip_reducere: int
     :return: un dictionar cu id,titlu_carte,gen_carte,pret,tip_reducere
     """
-    return {
-    "id":id,
-    "titlu_carte":titlu_carte,
-    "gen_carte":gen_carte,
-    "pret":pret,
-    "tip_reducere":tip_reducere
-    }
+    return [
+        id,
+        titlu_carte,
+        gen_carte,
+        pret,
+        tip_reducere
+    ]
+
+
 def get_id(librarie):
-    return librarie["id"]
+    return librarie[0]
+
+
 def get_titlu_carte(librarie):
-    return librarie["titlu_carte"]
+    return librarie[1]
+
+
 def get_gen_carte(librarie):
-    return librarie["gen_carte"]
+    return librarie[2]
+
+
 def get_pret(librarie):
-    return librarie["pret"]
+    return librarie[3]
+
+
 def get_tip_reducere(librarie):
-    return librarie["tip_reducere"]
+    return librarie[4]
