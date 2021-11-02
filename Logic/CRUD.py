@@ -1,42 +1,57 @@
-from Domain.librarie import creeaza_librarie, get_id
+from Domain.Librarie import creeazaLibrarie, getId
 
 
-def add_librarie(id,titlu_carte,gen_carte,pret,tip_reducere,lista):
+def adaugaLibrarie(id, titlu, gen, pret, reducere, lista):
     """
-    adauga librarie in lista de librari
-    :param id: id librarie adaugata
-    :param titlu_carte: titlul_carte librarie adaugata
-    :param gen_carte: gen_carte librarie adaugata
-    :param pret: pret librarie adaugata
-    :param tip_reducere: tip_redicere librarie adaugata
-    :param lista: lista cu librariile
-    :return: lista cu noua librarie adaugata
+    adauga o vanzare noua in lista de vanzari
+    :param id: id-ul noii carti , int
+    :param titlu: titlul noii carti , string
+    :param gen: genul noii carti , string
+    :param pret: pretul noii carti , float
+    :param reducere: reducerea noii carti , string (gold,sliver,none)
+    :param lista: lista la care se adauga ,list
+    :return:
     """
-    librarie=creeaza_librarie(id,titlu_carte,gen_carte,pret,tip_reducere)
-    lista.append(librarie)
-    return lista
-def get_by_id(lista,id):
-    """
+    if getById(id, lista) is not None:
+        raise ValueError("Id-ul exista deja")
+    librarie = creeazaLibrarie(id, titlu, gen, pret, reducere)
+    return lista + [librarie]
 
-    :param librarie:
-    :return:returneaza librarie dupa id
-    """
+def getById(id, lista):
     for librarie in lista:
-        if get_id(librarie) == id:
+        if getId(librarie) == id:
             return librarie
     return None
-def stergere_librarie(id,lista):
-    lista_noua=[]
-    for x in lista:
-        if get_id(lista[x]) != id:
-            lista_noua.append(lista[x])
-    return lista_noua
-def modificare_lista(id,lista):
-    lista_noua=[]
+
+def stergeLibrarie(id, lista):
+    """
+    sterge o carte din lista dupa un id dat
+    :param id: id-ul cartii care se sterge , int
+    :param lista: lista din care se sterge , lista
+    :return: lista fara cartea cu id-ul "id"
+    """
+    if getById(id, lista) is None:
+        raise ValueError("Nu exista o librarie cu id-ul dat")
+    return [librarie for librarie in lista if getId(librarie) != id]
+
+def modificaLibrarie(id, titlu, gen, pret, reducere, lista):
+    """
+    modifica o carte aleasa
+    :param id:id-ul cartii care doriti sa o modificati , int
+    :param titlu:noul titlu , string
+    :param gen: noul gen , string
+    :param pret:noul pret , float
+    :param reducere: noul tip de reducere , string (gold,none,silver)
+    :param lista: lista cu cartea schimbata
+    :return:lista noua
+    """
+    if getById(id, lista) is None:
+        raise ValueError("Nu exista o librarie cu id-ul dat")
+    listaNoua = []
     for librarie in lista:
-        if get_id(librarie) == id:
-            librarie_noua=creeaza_librarie(id,titlu_carte,gen_carte,pret,tip_reducere)
-            lista_noua.append(librarie_noua)
+        if getId(librarie) == id:
+            librarieNoua = creeazaLibrarie(id, titlu, gen, pret, reducere)
+            listaNoua.append(librarieNoua)
         else:
-            lista_noua.append(librarie)
-    return lista_noua
+            listaNoua.append(librarie)
+    return listaNoua

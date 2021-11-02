@@ -10,7 +10,7 @@ def test_stergere_librarie():
     lista = []
     add_librarie(1, "TREI IEZI", "poveste", 2.5, "silver", lista)
     add_librarie(2, "PATRU IEZI", "poveste", 3.5, "silver", lista)
-    stergere_librarie(1, lista)
+    lista=stergere_librarie(1, lista)
     assert len(lista) == 1
 
 

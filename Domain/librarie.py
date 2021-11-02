@@ -1,36 +1,49 @@
-def creeaza_librarie(id, titlu_carte, gen_carte, pret, tip_reducere):
+
+def creeazaLibrarie(id, titlu, gen, pret, reducere):
     """
-    :param id: int
-    :param titlu_carte: string
-    :param gen_carte:string
+    creeaza o lista de vanzari de carti (librarie)
+    :param id:int
+    :param titlu:string
+    :param gen:string
     :param pret:float
-    :param tip_reducere: int
-    :return: un dictionar cu id,titlu_carte,gen_carte,pret,tip_reducere
+    :param reducere:silver,    gold,   none
+    :return:o lista de vanzari
     """
-    return [
-        id,
-        titlu_carte,
-        gen_carte,
-        pret,
-        tip_reducere
-    ]
+    list=[]
+    list.append(id)
+    list.append(titlu)
+    list.append(gen)
+    list.append(pret)
+    list.append(reducere)
+    return list
 
 
-def get_id(librarie):
+
+def getId(librarie):
     return librarie[0]
 
-
-def get_titlu_carte(librarie):
+def getTitlu(librarie):
     return librarie[1]
 
-
-def get_gen_carte(librarie):
+def getGen(librarie):
     return librarie[2]
 
-
-def get_pret(librarie):
+def getPret(librarie):
     return librarie[3]
 
-
-def get_tip_reducere(librarie):
+def getReducere(librarie):
     return librarie[4]
+
+def toString(librarie):
+    """
+    conversteste un dictionar/o lista la string
+    :param librarie: lista
+    :return: string
+    """
+    return "Id: {}, Titlu: {}, Gen: {}, Pret: {}, Reducere: {}".format(
+        getId(librarie),
+        getTitlu(librarie),
+        getGen(librarie),
+        getPret(librarie),
+        getReducere(librarie),
+    )
