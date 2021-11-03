@@ -1,4 +1,6 @@
 from Domain.Librarie import getId, creeazaLibrarie, getGen, getTitlu, getPret, getReducere
+from Logic.CRUD import adaugaLibrarie, getById, modificaLibrarie
+
 
 def discount(lista):
     """
@@ -35,7 +37,7 @@ def modificareGen(numeOriginal, noulGen, lista):
     """
     modifica genul unei carti care are titlul dat
     :param numeOriginal:
-    :param numeSchimbat:
+    :param noulGen:
     :param lista:
     :return:
     """
@@ -53,3 +55,24 @@ def modificareGen(numeOriginal, noulGen, lista):
         else:
             listaNoua.append(librarie)
     return listaNoua
+def commandConsole(comand,lista):
+    list_comand=comand.split(",")
+    for x in range(len(list_comand)):
+        if list_comand[x] == "add":
+            try:
+                if getById(list_comand[x+1], lista) is not None:
+                 raise ValueError("Id-ul "+list_comand[x+1]+" exista deja")
+                lista=adaugaLibrarie(list_comand[x+1], list_comand[x+2], list_comand[x+3], list_comand[x+4], list_comand[x+5], lista)
+            except ValueError as ve:
+                print("Error: {}".format(ve))
+        if list_comand[x] == "show all":
+            from UI.console import showAll
+            showAll(lista)
+        if list_comand[x] == "edit":
+            try:
+                if getById(list_comand[x+1], lista) is None:
+                    raise ValueError("Nu exista o librarie cu id-ul "+list_comand[x+1])
+                lista=modificaLibrarie(list_comand[x+1], list_comand[x+2], list_comand[x+3], list_comand[x+4], list_comand[x+5], lista)
+            except ValueError as ve:
+                print("Error: {}" .format(ve))
+    return lista

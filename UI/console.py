@@ -1,6 +1,6 @@
 from Domain.Librarie import toString
 from Logic.CRUD import adaugaLibrarie, stergeLibrarie, modificaLibrarie
-from Logic.functionalitate import discount, modificareGen
+from Logic.functionalitate import discount, modificareGen, commandConsole
 
 
 def printMenu():
@@ -10,6 +10,7 @@ def printMenu():
     print("4. Reduceri silver si gold")
     print("5. Inlocuire gen")
     print("a. Afisare carti")
+    print("c.Command console")
     print("x. Iesire")
 
 
@@ -77,7 +78,14 @@ def runMenu(lista):
             lista = uiModificareGen(lista)
         elif optiune == "a":
             showAll(lista)
+        elif optiune == "c":
+            uiCommandConsole()
+            command=input("Dati comenzile despartite prin , :")
+            lista=commandConsole(command,lista)
         elif optiune == "x":
             break
         else:
             print("Optiune gresita! Reincercati: ")
+def uiCommandConsole():
+    print("Ati intrat in consola de tip command line")
+    print("Comenzile suportate la momentul actual sunt : add , show all , edit")

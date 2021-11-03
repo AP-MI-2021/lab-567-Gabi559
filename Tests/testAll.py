@@ -1,6 +1,6 @@
 from Tests.testCRUD import testAdaugaLibrarie, testStergeLibrarie, testModificaLibrarie, testGetById
 from Tests.testDomain import testLibrarie
-from Tests.testFunctionalitati import testDiscount
+from Tests.testFunctionalitati import testDiscount, testCommandConsole
 
 
 def runAllTests():
@@ -10,3 +10,4 @@ def runAllTests():
     testModificaLibrarie()
     testGetById()
     testDiscount()
+    testCommandConsole()
