@@ -68,11 +68,6 @@ def uiDiscount(lista, undo_list, redo_list):
     redo_list.clear()
     return rezultat
 
-def uiModificareGen(lista):
-    numeOriginal=input("Dati titlul operei al carei gen se va modifica: ")
-    numeSchimbat=input("Dati genul cu care se va inlocui: ")
-    return modificareGen(numeOriginal, numeSchimbat, lista)
-
 def uiPretMinim(lista):
     rezultat = pretMinim(lista)
     for gen in rezultat:
@@ -123,6 +118,18 @@ def runMenu(lista):
             lista = uiOrdonareDupaPret(lista, undo_list, redo_list)
         elif optiune == "8":
             uiNrTitluriPeGen(lista)
+        elif optiune == "u":
+            if len(undo_list) > 0:
+                redo_list.append(lista)
+                lista = undo_list.pop()
+            else:
+                print("Nu se poate face undo!")
+        elif optiune == "r":
+            if len(redo_list) > 0:
+                undo_list.append(lista)
+                lista = redo_list.pop()
+            else:
+                print("Nu se poate face redo!")
         elif optiune == "a":
             showAll(lista)
         elif optiune == "c":
@@ -135,4 +142,4 @@ def runMenu(lista):
             print("Optiune gresita! Reincercati: ")
 def uiCommandConsole():
     print("Ati intrat in consola de tip command line")
-    print("Comenzile suportate la momentul actual sunt : add , show all , edit")
+    print("Comenzile suportate la momentul actual sunt : add , delete , show all , edit")

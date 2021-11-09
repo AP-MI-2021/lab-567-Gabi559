@@ -1,5 +1,5 @@
 from Domain.Librarie import getId, creeazaLibrarie, getGen, getTitlu, getPret, getReducere
-from Logic.CRUD import adaugaLibrarie, getById, modificaLibrarie
+from Logic.CRUD import adaugaLibrarie, getById, modificaLibrarie, stergeLibrarie
 
 
 def discount(lista):
@@ -68,6 +68,8 @@ def commandConsole(comand,lista):
         if list_comand[x] == "show all":
             from UI.console import showAll
             showAll(lista)
+        if list_comand[x] == "delete":
+            lista=stergeLibrarie(list_comand[x+1], lista)
         if list_comand[x] == "edit":
             try:
                 if getById(list_comand[x+1], lista) is None:
