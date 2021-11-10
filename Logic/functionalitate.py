@@ -78,14 +78,14 @@ def commandConsole(comand,lista):
             except ValueError as ve:
                 print("Error: {}" .format(ve))
     return lista
-def modificareGen(numeOriginal, numeSchimbat, lista):
+def modificareGen(numeOriginal, genSchimbat, lista):
     listaNoua = []
     for librarie in lista:
         if getTitlu(librarie) == numeOriginal:
             librarieNoua = creeazaLibrarie(
                 getId(librarie),
                 getTitlu(librarie),
-                numeSchimbat ,
+                genSchimbat ,
                 getPret(librarie),
                 getReducere(librarie)
             )
